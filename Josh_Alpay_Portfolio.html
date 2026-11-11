@@ -310,7 +310,7 @@
       </div>
       <div class="stats reveal">
         <!-- EDIT: change numbers and labels -->
-        <div class="stat"><b data-count="5">0</b><span>Projects built</span></div>
+        <div class="stat"><b id="projCount" data-count="6">0</b><span>Projects built</span></div>
         <div class="stat"><b data-count="6">0</b><span>Languages &amp; tools</span></div>
         <div class="stat"><b data-count="1">0</b><span>Year in BSIT</span></div>
         <div class="stat"><b data-count="100">0</b><span>% curious</span></div>
@@ -518,6 +518,9 @@
   const links = document.getElementById("navLinks");
   document.getElementById("menuBtn").addEventListener("click", () => links.classList.toggle("open"));
   links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
+
+  // ---------- Keep the "Projects built" stat in sync with the project cards ----------
+  document.getElementById("projCount").dataset.count = document.querySelectorAll(".project").length;
 
   // ---------- Reveal on scroll + counters ----------
   const io = new IntersectionObserver(entries => {
