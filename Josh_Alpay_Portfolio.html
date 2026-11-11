@@ -152,6 +152,24 @@
   @media (prefers-reduced-motion: reduce) { .waves svg, .sun { animation: none; } }
   @media (max-width: 860px) { .sun { width: 100px; height: 100px; right: 6%; top: 8%; } .waves { height: 110px; } }
 
+
+  /* ---------- LOADING SCREEN ---------- */
+  .loader { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: var(--bg);
+    transition: opacity .7s ease, visibility .7s ease; }
+  .loader.done { opacity: 0; visibility: hidden; }
+  .loader-inner { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .loader-orb { position: relative; width: 120px; height: 120px; border-radius: 50%; overflow: hidden;
+    border: 2px solid var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent);
+    box-shadow: 0 0 40px color-mix(in srgb, var(--warm) 35%, transparent); }
+  .loader-fill { position: absolute; left: 0; right: 0; bottom: 0; height: 100%; transform: translateY(85%); animation: fillUp 1.6s ease-out forwards; }
+  .loader-fill svg { position: absolute; left: 0; top: 0; width: 200%; height: 100%; color: var(--accent); animation: drift 3.2s linear infinite; }
+  @keyframes fillUp { to { transform: translateY(18%); } }
+  .loader-name { font-size: 1.5rem; font-weight: 500; text-transform: lowercase; letter-spacing: .04em; }
+  .loader-sub { font-family: var(--mono); font-size: .8rem; color: var(--muted); letter-spacing: .12em; animation: blink 1.4s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: .35; } }
+  body.loading { overflow: hidden; }
+  @media (prefers-reduced-motion: reduce) { .loader-fill, .loader-fill svg, .loader-sub { animation: none; } .loader-fill { transform: translateY(18%); } }
+
   /* ---------- SECTIONS ---------- */
   section { padding: 90px 0; }
   section.alt { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -253,7 +271,15 @@
   }
 </style>
 </head>
-<body>
+<body class="loading">
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-orb"><div class="loader-fill"><svg viewBox="0 0 480 120" preserveAspectRatio="none"><path fill="currentColor" d="M0 50.0 L10 53.5 L20 56.1 L30 57.0 L40 56.1 L50 53.5 L60 50.0 L70 46.5 L80 43.9 L90 43.0 L100 43.9 L110 46.5 L120 50.0 L130 53.5 L140 56.1 L150 57.0 L160 56.1 L170 53.5 L180 50.0 L190 46.5 L200 43.9 L210 43.0 L220 43.9 L230 46.5 L240 50.0 L250 53.5 L260 56.1 L270 57.0 L280 56.1 L290 53.5 L300 50.0 L310 46.5 L320 43.9 L330 43.0 L340 43.9 L350 46.5 L360 50.0 L370 53.5 L380 56.1 L390 57.0 L400 56.1 L410 53.5 L420 50.0 L430 46.5 L440 43.9 L450 43.0 L460 43.9 L470 46.5 L480 50.0 V120 H0Z"/></svg></div></div>
+    <p class="loader-name">josh alpay</p>
+    <p class="loader-sub">loading...</p>
+  </div>
+</div>
+<noscript><style>.loader{display:none} body.loading{overflow:auto}</style></noscript>
 
 <!-- ======================= NAV ======================= -->
 <nav>
@@ -579,6 +605,20 @@
   });
 
   document.getElementById("yr").textContent = new Date().getFullYear();
+
+  // ---------- Loading screen ----------
+  (function () {
+    var loader = document.getElementById("loader");
+    var start = Date.now();
+    function hide() {
+      loader.classList.add("done");
+      document.body.classList.remove("loading");
+      setTimeout(function () { loader.remove(); }, 800);
+    }
+    function ready() { setTimeout(hide, Math.max(0, 1500 - (Date.now() - start))); }
+    if (document.readyState === "complete") ready(); else window.addEventListener("load", ready);
+    setTimeout(hide, 5000); // safety net
+  })();
 </script>
 </body>
 </html>
