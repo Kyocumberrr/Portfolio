@@ -6,34 +6,38 @@
 <title>Josh Alpay — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   /* =========================================================
      THEME — change these to restyle the whole site
      ========================================================= */
   :root {
-    --bg: #000000;
-    --bg-2: #0a0a0a;
-    --card: #111111;
-    --line: #262626;
-    --text: #f2f2f2;
-    --muted: #9a9a9a;
-    --accent: #e0112b;       /* kagune crimson */
-    --accent-2: #ff4d5e;
+    --bg: #0a1626;           /* deep night sea */
+    --bg-2: #0e1f36;
+    --card: #12263f;
+    --line: #213b5c;
+    --text: #e9f1fa;
+    --muted: #8fa7c2;
+    --accent: #7fb7e6;       /* sky blue */
+    --accent-2: #bfdcf5;
+    --warm: #f6c8a0;         /* sunset peach */
+    --on-accent: #08121f;
     --radius: 14px;
     --max: 1100px;
-    --font: "Space Grotesk", system-ui, sans-serif;
+    --font: "DM Sans", system-ui, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, monospace;
   }
   [data-theme="light"] {
-    --bg: #f3f1f1;
-    --bg-2: #e6e2e2;
-    --card: #ffffff;
-    --line: #d2cccc;
-    --text: #140b0b;
-    --muted: #5e5252;
-    --accent: #b30d22;
-    --accent-2: #8a0a1a;
+    --bg: #eaf1f7;
+    --bg-2: #dde9f3;
+    --card: #fbfdff;
+    --line: #c5d6e6;
+    --text: #12263a;
+    --muted: #52657a;
+    --accent: #2a74b3;
+    --accent-2: #1d5a8f;
+    --warm: #e9a97a;
+    --on-accent: #ffffff;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,12 +78,10 @@
   .hero { padding: 110px 0 90px; position: relative; overflow: hidden; }
   .hero::before {
     content: ""; position: absolute; inset: 0;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse at 70% 30%, #000 10%, transparent 65%);
-    opacity: .5; pointer-events: none;
+    background:
+      radial-gradient(circle at 78% 24%, color-mix(in srgb, var(--warm) 24%, transparent), transparent 40%),
+      radial-gradient(circle at 15% 85%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 50%);
+    pointer-events: none;
   }
   .hero .wrap { position: relative; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
   .tag {
@@ -102,16 +104,16 @@
     cursor: pointer; font-family: inherit; font-size: .95rem; color: var(--text);
   }
   .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
-  .btn.primary { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 
   .avatar-card {
     border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
     background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px;
-    box-shadow: 0 20px 60px -25px rgba(224,17,43,.45);
+    box-shadow: 0 20px 60px -25px rgba(127,183,230,.35);
   }
   .avatar {
     aspect-ratio: 1; border-radius: 14px; overflow: hidden;
-    background: linear-gradient(135deg, #e0112b, #1a0003);
+    background: linear-gradient(135deg, #7fb7e6, #12263f);
     display: grid; place-items: center;
     font-size: 5rem; font-weight: 700; color: #ffffff; letter-spacing: -0.04em;
   }
@@ -122,14 +124,26 @@
   .id-rows span:first-child { color: var(--muted); }
 
 
-  /* ---------- LILY OF DEATH (red spider lily) ---------- */
-  .lily { position: absolute; color: var(--accent); pointer-events: none; }
-  .lily-main { width: 620px; right: -140px; bottom: -190px; opacity: .22; animation: sway 14s ease-in-out infinite; transform-origin: 50% 50%; filter: drop-shadow(0 0 14px rgba(224,17,43,.5)); }
-  .lily-small { width: 220px; left: -60px; top: 40px; opacity: .12; animation: sway 18s ease-in-out infinite reverse; }
-  @keyframes sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(5deg) scale(1.03); } }
-  .footer-lily { width: 22px; height: 22px; color: var(--accent); display: inline-block; vertical-align: -5px; margin-right: 8px; }
-  @media (prefers-reduced-motion: reduce) { .lily { animation: none; } }
-  @media (max-width: 860px) { .lily-main { width: 420px; right: -120px; bottom: -120px; } .lily-small { display: none; } }
+  /* ---------- WAVE TO EARTH (waves, sun, film grain) ---------- */
+  .hero { overflow: hidden; }
+  .waves { position: absolute; left: 0; right: 0; bottom: 0; height: 150px; pointer-events: none; overflow: hidden; }
+  .waves svg { position: absolute; bottom: 0; left: 0; width: 200%; height: 100%; color: var(--accent); }
+  .waves .w-back { opacity: .16; animation: drift 38s linear infinite reverse; }
+  .waves .w-front { opacity: .28; animation: drift 26s linear infinite; }
+  @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .sun { position: absolute; right: 11%; top: 16%; width: 150px; height: 150px; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle, color-mix(in srgb, var(--warm) 90%, #fff) 0%, var(--warm) 45%, transparent 70%);
+    opacity: .5; animation: float 10s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+  .footer-wave { width: 26px; height: 18px; color: var(--accent); display: inline-block; vertical-align: -4px; margin-right: 8px; }
+  h1, h2, .logo { text-transform: lowercase; font-weight: 500; letter-spacing: .01em; }
+  h1 { letter-spacing: -0.01em; }
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: .07; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  @media (prefers-reduced-motion: reduce) { .waves svg, .sun { animation: none; } }
+  @media (max-width: 860px) { .sun { width: 100px; height: 100px; right: 6%; top: 8%; } .waves { height: 110px; } }
 
   /* ---------- SECTIONS ---------- */
   section { padding: 90px 0; }
@@ -159,7 +173,7 @@
   /* Projects */
   .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
   .filter { font-family: var(--mono); font-size: .8rem; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
-  .filter.on { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+  .filter.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
   .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .project {
     background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
@@ -254,10 +268,11 @@
 
 <!-- ======================= HERO ======================= -->
 <header class="hero" id="home">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<symbol id="lily" viewBox="0 0 400 400"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="6"><g transform="rotate(0.0 200 200)"><path transform="translate(200 0) scale(1 1) translate(-200 0)" d="M200 200 C192 155 178 105 212 62 C224 46 244 52 248 68" /></g><g transform="rotate(51.4 200 200)"><path transform="translate(200 0) scale(-1 1) translate(-200 0)" d="M200 200 C192 155 178 105 212 62 C224 46 244 52 248 68" /></g><g transform="rotate(102.9 200 200)"><path transform="translate(200 0) scale(1 1) translate(-200 0)" d="M200 200 C192 155 178 105 212 62 C224 46 244 52 248 68" /></g><g transform="rotate(154.3 200 200)"><path transform="translate(200 0) scale(-1 1) translate(-200 0)" d="M200 200 C192 155 178 105 212 62 C224 46 244 52 248 68" /></g><g transform="rotate(205.7 200 200)"><path transform="translate(200 0) scale(1 1) translate(-200 0)" d="M200 200 C192 155 178 105 212 62 C224 46 244 52 248 68" /></g><g transform="rotate(257.1 200 200)"><path transform="translate(200 0) scale(-1 1) translate(-200 0)" d="M200 200 C192 155 178 105 212 62 C224 46 244 52 248 68" /></g><g transform="rotate(308.6 200 200)"><path transform="translate(200 0) scale(1 1) translate(-200 0)" d="M200 200 C192 155 178 105 212 62 C224 46 244 52 248 68" /></g><g transform="rotate(18.0 200 200)"><g transform="translate(200 0) scale(1 1) translate(-200 0)"><path d="M200 200 C206 140 220 85 262 36" stroke-width="2"/><circle cx="262" cy="36" r="4.5" fill="currentColor" stroke="none"/></g></g><g transform="rotate(58.0 200 200)"><g transform="translate(200 0) scale(-1 1) translate(-200 0)"><path d="M200 200 C206 140 220 85 262 36" stroke-width="2"/><circle cx="262" cy="36" r="4.5" fill="currentColor" stroke="none"/></g></g><g transform="rotate(98.0 200 200)"><g transform="translate(200 0) scale(1 1) translate(-200 0)"><path d="M200 200 C206 140 220 85 262 36" stroke-width="2"/><circle cx="262" cy="36" r="4.5" fill="currentColor" stroke="none"/></g></g><g transform="rotate(138.0 200 200)"><g transform="translate(200 0) scale(-1 1) translate(-200 0)"><path d="M200 200 C206 140 220 85 262 36" stroke-width="2"/><circle cx="262" cy="36" r="4.5" fill="currentColor" stroke="none"/></g></g><g transform="rotate(178.0 200 200)"><g transform="translate(200 0) scale(1 1) translate(-200 0)"><path d="M200 200 C206 140 220 85 262 36" stroke-width="2"/><circle cx="262" cy="36" r="4.5" fill="currentColor" stroke="none"/></g></g><g transform="rotate(218.0 200 200)"><g transform="translate(200 0) scale(-1 1) translate(-200 0)"><path d="M200 200 C206 140 220 85 262 36" stroke-width="2"/><circle cx="262" cy="36" r="4.5" fill="currentColor" stroke="none"/></g></g><g transform="rotate(258.0 200 200)"><g transform="translate(200 0) scale(1 1) translate(-200 0)"><path d="M200 200 C206 140 220 85 262 36" stroke-width="2"/><circle cx="262" cy="36" r="4.5" fill="currentColor" stroke="none"/></g></g><g transform="rotate(298.0 200 200)"><g transform="translate(200 0) scale(-1 1) translate(-200 0)"><path d="M200 200 C206 140 220 85 262 36" stroke-width="2"/><circle cx="262" cy="36" r="4.5" fill="currentColor" stroke="none"/></g></g><g transform="rotate(338.0 200 200)"><g transform="translate(200 0) scale(1 1) translate(-200 0)"><path d="M200 200 C206 140 220 85 262 36" stroke-width="2"/><circle cx="262" cy="36" r="4.5" fill="currentColor" stroke="none"/></g></g></g><circle cx="200" cy="200" r="6" fill="currentColor"/></symbol></defs></svg>
-<svg class="lily lily-main" viewBox="0 0 400 400" aria-hidden="true"><use href="#lily"/></svg>
-<svg class="lily lily-small" viewBox="0 0 400 400" aria-hidden="true"><use href="#lily"/></svg>
+<div class="sun" aria-hidden="true"></div>
+<div class="waves" aria-hidden="true">
+<svg class="w-back" viewBox="0 0 2880 200" preserveAspectRatio="none"><path fill="currentColor" d="M0 128.9 L40 125.0 L80 119.1 L120 113.0 L160 108.2 L200 106.1 L240 107.1 L280 111.0 L320 116.9 L360 123.0 L400 127.8 L440 129.9 L480 128.9 L520 125.0 L560 119.1 L600 113.0 L640 108.2 L680 106.1 L720 107.1 L760 111.0 L800 116.9 L840 123.0 L880 127.8 L920 129.9 L960 128.9 L1000 125.0 L1040 119.1 L1080 113.0 L1120 108.2 L1160 106.1 L1200 107.1 L1240 111.0 L1280 116.9 L1320 123.0 L1360 127.8 L1400 129.9 L1440 128.9 L1480 125.0 L1520 119.1 L1560 113.0 L1600 108.2 L1640 106.1 L1680 107.1 L1720 111.0 L1760 116.9 L1800 123.0 L1840 127.8 L1880 129.9 L1920 128.9 L1960 125.0 L2000 119.1 L2040 113.0 L2080 108.2 L2120 106.1 L2160 107.1 L2200 111.0 L2240 116.9 L2280 123.0 L2320 127.8 L2360 129.9 L2400 128.9 L2440 125.0 L2480 119.1 L2520 113.0 L2560 108.2 L2600 106.1 L2640 107.1 L2680 111.0 L2720 116.9 L2760 123.0 L2800 127.8 L2840 129.9 L2880 128.9 V200 H0Z"/></svg>
+<svg class="w-front" viewBox="0 0 2880 200" preserveAspectRatio="none"><path fill="currentColor" d="M0 100.0 L40 105.5 L80 110.3 L120 113.9 L160 115.8 L200 115.8 L240 113.9 L280 110.3 L320 105.5 L360 100.0 L400 94.5 L440 89.7 L480 86.1 L520 84.2 L560 84.2 L600 86.1 L640 89.7 L680 94.5 L720 100.0 L760 105.5 L800 110.3 L840 113.9 L880 115.8 L920 115.8 L960 113.9 L1000 110.3 L1040 105.5 L1080 100.0 L1120 94.5 L1160 89.7 L1200 86.1 L1240 84.2 L1280 84.2 L1320 86.1 L1360 89.7 L1400 94.5 L1440 100.0 L1480 105.5 L1520 110.3 L1560 113.9 L1600 115.8 L1640 115.8 L1680 113.9 L1720 110.3 L1760 105.5 L1800 100.0 L1840 94.5 L1880 89.7 L1920 86.1 L1960 84.2 L2000 84.2 L2040 86.1 L2080 89.7 L2120 94.5 L2160 100.0 L2200 105.5 L2240 110.3 L2280 113.9 L2320 115.8 L2360 115.8 L2400 113.9 L2440 110.3 L2480 105.5 L2520 100.0 L2560 94.5 L2600 89.7 L2640 86.1 L2680 84.2 L2720 84.2 L2760 86.1 L2800 89.7 L2840 94.5 L2880 100.0 V200 H0Z"/></svg>
+</div>
 
   <div class="wrap">
     <div>
@@ -369,7 +384,7 @@
     <div class="projects">
       <!-- EDIT: copy one <article> block per project. data-cat = filter tags. Add <div class="links"><a href="...">Code ↗</a></div> once a project has a repo or live demo. -->
       <article class="project reveal" data-cat="java school">
-        <div class="thumb" style="background:linear-gradient(135deg,#e0112b,#5c0612)">01</div>
+        <div class="thumb" style="background:linear-gradient(135deg,#2f7fc1,#0e2a47)">01</div>
         <div class="body">
           <h3>Barangay First Aid Kit Calculator</h3>
           <p>A Java program that uses a for loop to work out how many first aid kits each household needs, adding extras for seniors, PWDs, and low-income families, then prints the total and average.</p>
@@ -378,7 +393,7 @@
       </article>
 
       <article class="project reveal" data-cat="web school">
-        <div class="thumb" style="background:linear-gradient(135deg,#ff4d5e,#e0112b)">02</div>
+        <div class="thumb" style="background:linear-gradient(135deg,#4a95d6,#1d4f80)">02</div>
         <div class="body">
           <h3>School Webpage Debug Lab</h3>
           <p>A hands-on HTML activity where I found and fixed tag errors in a broken school page, then tested it in the browser and explained each fix.</p>
@@ -387,7 +402,7 @@
       </article>
 
       <article class="project reveal" data-cat="java school">
-        <div class="thumb" style="background:linear-gradient(135deg,#2a0207,#000000);color:#ff4d5e">03</div>
+        <div class="thumb" style="background:linear-gradient(135deg,#0e2a47,#0a1626);color:#bfdcf5">03</div>
         <div class="body">
           <h3>Student Grade Calculator</h3>
           <p>A console app that takes quiz, exam, and activity scores, applies weighted percentages, and shows the final grade with a pass or fail result.</p>
@@ -396,7 +411,7 @@
       </article>
 
       <article class="project reveal" data-cat="web">
-        <div class="thumb" style="background:linear-gradient(135deg,#5c0612,#e0112b)">04</div>
+        <div class="thumb" style="background:linear-gradient(135deg,#1d4f80,#2f7fc1)">04</div>
         <div class="body">
           <h3>To-Do Task Tracker</h3>
           <p>A clean task list where you can add, check off, filter, and delete tasks, built with plain JavaScript and DOM events.</p>
@@ -405,7 +420,7 @@
       </article>
 
       <article class="project reveal" data-cat="web school">
-        <div class="thumb" style="background:linear-gradient(135deg,#000000,#e0112b)">05</div>
+        <div class="thumb" style="background:linear-gradient(135deg,#0a1626,#3b8bd0)">05</div>
         <div class="body">
           <h3>Gunita Events Landing Page</h3>
           <p>A responsive landing page for an events company concept, with a hero banner, services section, and an inquiry form.</p>
@@ -414,7 +429,7 @@
       </article>
 
       <article class="project reveal" data-cat="java school">
-        <div class="thumb" style="background:linear-gradient(135deg,#e0112b,#1a0003)">06</div>
+        <div class="thumb" style="background:linear-gradient(135deg,#3b8bd0,#12263f)">06</div>
         <div class="body">
           <h3>ATM Simulator</h3>
           <p>A menu-driven Java program that mimics an ATM with PIN checking, balance inquiry, deposits, withdrawals, and input validation.</p>
@@ -478,7 +493,7 @@
 
 <footer>
   <div class="wrap">
-    <span><svg class="footer-lily" viewBox="0 0 400 400" aria-hidden="true"><use href="#lily"/></svg>© <span id="yr"></span> Josh Alpay · BIT14, DLSU-D</span>
+    <span><svg class="footer-wave" viewBox="0 0 26 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 9c3-5 5-5 8 0s5 5 8 0 4-4 6-2"/></svg>© <span id="yr"></span> Josh Alpay · BIT14, DLSU-D</span>
     <a href="#home" class="mono">↑ back to top</a>
   </div>
 </footer>
