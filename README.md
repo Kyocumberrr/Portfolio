@@ -1,14 +1,14 @@
 <div align="center">
 
-# 🥀 Josh Alpay — Portfolio
+# 🌊 Josh Alpay — Portfolio
 
 **BSIT student @ De La Salle University – Dasmariñas · BIT14**
 
-A single-page personal portfolio with a dark **Tokyo Ghoul** look — pure black, kagune crimson, and a swaying red spider lily.
+A single-page personal portfolio with a dreamy **wave to earth** look — deep night-sea blues, a soft sunset glow, drifting waves, and a touch of film grain.
 
-![HTML5](https://img.shields.io/badge/HTML5-e0112b?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-111111?style=for-the-badge&logo=css3&logoColor=e0112b)
-![JavaScript](https://img.shields.io/badge/JavaScript-111111?style=for-the-badge&logo=javascript&logoColor=e0112b)
+![HTML5](https://img.shields.io/badge/HTML5-7fb7e6?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-0a1626?style=for-the-badge&logo=css3&logoColor=7fb7e6)
+![JavaScript](https://img.shields.io/badge/JavaScript-0a1626?style=for-the-badge&logo=javascript&logoColor=7fb7e6)
 
 </div>
 
@@ -16,8 +16,8 @@ A single-page personal portfolio with a dark **Tokyo Ghoul** look — pure black
 
 ## ✨ Features
 
-- 🖤 **Tokyo Ghoul theme** — black background with a crimson accent, plus a matching light mode
-- 🌸 **Red spider lily** (lily of death) drawn in SVG, gently swaying in the hero and tucked into the footer
+- 🌊 **Wave to earth theme** — night-sea blue with a sky-blue accent, plus a hazy light mode
+- ☀️ **Drifting waves and a floating sun** drawn in SVG at the bottom of the hero, plus a subtle film-grain overlay
 - ⌨️ **Typing effect** that cycles through roles in the hero
 - 🌗 **Dark / light toggle** that remembers your choice
 - 🗂️ **Filterable projects** grid (Web, Java, School)
@@ -51,10 +51,10 @@ All theme colors live at the top of the `<style>` block:
 
 ```css
 :root {
-  --bg: #000000;        /* background */
-  --card: #111111;      /* cards */
-  --accent: #e0112b;    /* kagune crimson */
-  --accent-2: #ff4d5e;  /* lighter red */
+  --bg: #0a1626;        /* background */
+  --card: #12263f;      /* cards */
+  --accent: #7fb7e6;    /* sky blue */
+  --accent-2: #bfdcf5;  /* lighter blue */
 }
 ```
 
@@ -76,7 +76,7 @@ Open to projects and internships — reach out through the contact section of th
 
 <div align="center">
 
-*"I'm not the one who's wrong. The world is."* 🥀
+*keep flowing.* 🌊
 
 © Josh Alpay · BIT14, DLSU-D
 
