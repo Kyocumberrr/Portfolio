@@ -660,7 +660,7 @@
   const hero = cv.parentElement, ctx = cv.getContext("2d");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const FPS = 10;                       // low frame rate = chunky retro feel
-  let W, H, P, pal, bgL, fgL, stars, clouds, tick = 0, last = 0, running = true;
+  let W, H, P, pal, bgL, fgL, clouds, car, tick = 0, last = 0, running = true;
 
   const rng = seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
     t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
@@ -681,7 +681,6 @@
     const layerT = dark ? [.24, .14, .06] : [.34, .48, .64];
     return { dark, sky, bg, accent, warm,
       mount: layerT.map(t => mix(dark ? bg : mix(bg, accent, .1), accent, t)),
-      star: dark ? mix(accent, [255, 255, 255], .6) : mix(accent, bg, .1),
       cloud: dark ? mix(horizon, accent, .22) : mix(bg, [255, 255, 255], .65),
       moon: mix(warm, [255, 255, 255], dark ? .55 : .25),
       moonDark: mix(warm, bg, .35) };
@@ -742,12 +741,10 @@
       }
     });
 
-    // --- stars + clouds
-    const nStars = Math.floor(W * H / 380);
-    stars = Array.from({ length: nStars }, () => ({ x: Math.floor(R() * W), y: Math.floor(R() * H * .66),
-      ph: Math.floor(R() * 40), big: R() < .1, len: 14 + Math.floor(R() * 26) }));
+    // --- clouds + the car that drives along the road
     clouds = Array.from({ length: Math.max(3, Math.round(W / 150)) }, () => ({ x: R() * W, y: Math.floor(H * (.1 + R() * .38)),
       w: 16 + Math.floor(R() * 16), sp: .015 + R() * .03 }));
+    car = { x: reduce ? Math.round(W * .3) : -22 };
     draw();
   }
 
@@ -758,18 +755,52 @@
     ctx.fillRect(x0 + 2, c.y - 1, Math.floor(c.w * .3), 1);
   }
 
+  function road() {
+    const rh = 6, y0 = H - rh;
+    ctx.fillStyle = css(pal.dark ? mix(pal.bg, [0, 0, 0], .5) : mix(pal.bg, pal.accent, .5));
+    ctx.fillRect(0, y0, W, rh);
+    ctx.fillStyle = css(mix(pal.accent, pal.bg, pal.dark ? .55 : .2));
+    ctx.fillRect(0, y0, W, 1);                                   // road edge
+    ctx.fillStyle = css(mix(pal.warm, pal.bg, .3));
+    for (let x = 0; x < W; x += 8) ctx.fillRect(x, H - 3, 4, 1); // dashed centre line
+  }
+
+  function drawCar() {
+    const x = Math.round(car.x), y = H - 6 - 7;                  // sits on the road
+    const body = pal.dark ? pal.accent : mix(pal.accent, pal.bg, .2);
+    const glass = mix(pal.accent, [255, 255, 255], .75);
+    const tyre = pal.dark ? [8, 6, 14] : [30, 22, 45];
+    const hub = mix(pal.accent, [255, 255, 255], .5);
+    ctx.fillStyle = css(body);
+    ctx.fillRect(x + 4, y, 8, 1);                                // roof
+    ctx.fillRect(x + 3, y + 1, 10, 2);                           // cabin
+    ctx.fillRect(x, y + 3, 18, 3);                               // body
+    ctx.fillStyle = css(glass);
+    ctx.fillRect(x + 4, y + 1, 4, 2); ctx.fillRect(x + 9, y + 1, 3, 2);   // windows
+    ctx.fillStyle = css(mix(body, [0, 0, 0], .35));
+    ctx.fillRect(x, y + 5, 18, 1);                               // lower trim
+    ctx.fillStyle = css(mix(pal.warm, [255, 255, 255], .6));
+    ctx.fillRect(x + 17, y + 3, 1, 1);                           // headlight
+    ctx.fillStyle = css([255, 90, 110]);
+    ctx.fillRect(x, y + 3, 1, 1);                                // tail light
+    ctx.fillStyle = css(tyre);
+    ctx.fillRect(x + 3, y + 5, 4, 3); ctx.fillRect(x + 12, y + 5, 4, 3);  // wheels
+    ctx.fillStyle = css(hub);
+    const s = tick & 1;                                          // wheels "spin"
+    ctx.fillRect(x + 4 + s, y + 6, 1, 1); ctx.fillRect(x + 13 + s, y + 6, 1, 1);
+    if (!reduce) {                                               // little dust puffs
+      ctx.fillStyle = css(mix(pal.bg, pal.accent, .45));
+      ctx.fillRect(x - 2 - s, y + 7, 1, 1); ctx.fillRect(x - 5 + s, y + 6, 1, 1);
+    }
+  }
+
   function draw() {
     ctx.clearRect(0, 0, W, H);
     ctx.drawImage(bgL, 0, 0);
-    ctx.fillStyle = css(pal.star);
-    stars.forEach(s => {
-      const on = reduce || ((tick + s.ph) % s.len) > 2;       // brief blink-off = twinkle
-      if (!on) return;
-      ctx.fillRect(s.x, s.y, 1, 1);
-      if (s.big && ((tick + s.ph) % s.len) > 4) { ctx.fillRect(s.x - 1, s.y, 1, 1); ctx.fillRect(s.x + 1, s.y, 1, 1); ctx.fillRect(s.x, s.y - 1, 1, 1); ctx.fillRect(s.x, s.y + 1, 1, 1); }
-    });
     clouds.forEach(cloud);
     ctx.drawImage(fgL, 0, 0);
+    road();
+    drawCar();
   }
 
   function loop(t) {
@@ -777,6 +808,7 @@
     if (!running || t - last < 1000 / FPS) return;
     last = t; tick++;
     clouds.forEach(c => { c.x += c.sp * 6; if (c.x > W + 4) c.x = -c.w - 4; });
+    car.x += 2; if (car.x > W + 4) car.x = -22;                      // drive left to right, then loop
     draw();
   }
 
