@@ -191,6 +191,7 @@
   .skill-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
   .skill-card h3 { font-size: 1.05rem; margin-bottom: 14px; display: flex; gap: 10px; align-items: center; }
   .skill-card h3 .ic { font-family: var(--mono); color: var(--accent); }
+  .skill-card.soft { grid-column: 1 / -1; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { font-family: var(--mono); font-size: .78rem; padding: 5px 10px; border-radius: 6px; background: var(--bg-2); border: 1px solid var(--line); color: var(--muted); }
 
@@ -392,7 +393,7 @@
     <div class="sec-head reveal">
       <div class="num">02 /</div>
       <h2> Skills </h2>
-      <p>Tools and technologies I've worked with. <!-- EDIT: add/remove chips --></p>
+      <p>The tools I use and the soft skills I bring to a team. <!-- EDIT: add/remove chips --></p>
     </div>
     <div class="skills-grid">
       <div class="skill-card reveal">
@@ -411,6 +412,12 @@
         <h3><span class="ic">#</span> Tools</h3>
         <div class="chips">
           <span class="chip">Git</span><span class="chip">VS Code</span><span class="chip">Figma</span><span class="chip">MS Office</span>
+        </div>
+      </div>
+      <div class="skill-card soft reveal">
+        <h3><span class="ic">&hearts;</span> Soft Skills</h3>
+        <div class="chips">
+          <span class="chip">Communication</span><span class="chip">Teamwork</span><span class="chip">Problem Solving</span><span class="chip">Critical Thinking</span><span class="chip">Time Management</span><span class="chip">Adaptability</span><span class="chip">Creativity</span><span class="chip">Willingness to Learn</span>
         </div>
       </div>
     </div>
