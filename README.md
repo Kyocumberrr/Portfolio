@@ -22,6 +22,7 @@ A single-page personal portfolio with a dark **violet and black** look, a retro 
 - ⏳ **Loading screen** that fades out when the page is ready
 - ✨ **Card hover effects** on projects and skills
 - 🎨 **Poster thumbnails** on each project, tinted violet to match the theme and revealing full color on hover
+- 🔮 **Master Ball cursor** that follows the mouse and pops open with a flash and pixel sparks on click (desktop only)
 - ⌨️ **Typing effect** that cycles through roles in the hero
 - 🌗 **Dark / light toggle** that remembers your choice
 - 🗂️ **Filterable projects** grid (Web, Java, School)

@@ -169,6 +169,31 @@
   body.loading { overflow: hidden; }
   @media (prefers-reduced-motion: reduce) { .loader-fill, .loader-fill svg, .loader-sub { animation: none; } .loader-fill { transform: translateY(18%); } }
 
+  /* ---------- MASTER BALL CURSOR ---------- */
+  #cursor { display: none; }
+  @media (hover: hover) and (pointer: fine) {
+    html, html * { cursor: none !important; }
+    #cursor { display: block; position: fixed; left: 0; top: 0; width: 40px; height: 40px; margin: -20px 0 0 -20px; z-index: 2000; pointer-events: none; opacity: 0;
+      transition: opacity .2s ease; will-change: transform; }
+    #cursor.show { opacity: 1; }
+    #cursor .c-wrap { position: relative; width: 100%; height: 100%; transition: transform .15s ease;
+      filter: drop-shadow(0 0 1px rgba(255,255,255,.85)) drop-shadow(0 0 7px color-mix(in srgb, var(--accent) 70%, transparent)); }
+    #cursor.link .c-wrap { transform: scale(1.25); }
+    #cursor .c-top, #cursor .c-bot { position: absolute; inset: 0; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAADjElEQVR42u2cTUhUURTH3xttY0G7UggzIsh03nOMPnRRm2hRUAaBFqXSMsh0DFqJQ1A7R2cVLe2DtI3goo9FhC3UPtR5M5LWRhsJP1bRQtPS2/p/gnt5jDPP6H92550399137jk/zrnvvbGtHIvruiqX43ueZ+dy/JBFoYPooByK7/w1MUUaY0Wv0W7b2a2h+g3qneVTOWUWI4gOooOCZZAjmDPwvcfwC6RQqiSiZZRfJDnzE3rqKVzz5NwYMiv8yBeTGEFMMToovwxy3TAk9bvER7B/axrWE0i4fLH0mPb8pbU1McA6qOGFFOglvTWCQHgLi436+SUz48gk56GWSYwgphgdlFMplAc6JpuQOc3DvgZMFVeDvts3FW1GEFOMDvqPGCT3dyI/DuMZG/oBJjLYG4VE77W0top1i1ICOYI5Ss+ghaYRbStmFHF+R/oq6BctjxHEFKODAqyDTMxJfhX7MTWNoFZ0YZKnb2FvVRnfBvpkFC9YIBCULqkC3Zn3rOwgZGmZ5ziOYgQxxeig4Bgk90tkitvHr4F+KC6Y045MqezCS3yK/kJmxdE+HVWGXs8xMEkyc9zQ+0k1xAhiitFBATJoyME95JNFFZafJA5JZgm7rQoNhZdhP0j0bomdON6J9Af9aCIkXjoRMZ1eRhBTjA4KkEEr9qqfssGaalO61sbyRN0TskOi7rG1nZXyucRv3SOG3kse+KmdPyOIKUYH5ZdBs2XdoL+YuQH62aKjoizBpL1ffMVXWXN9/rHWPrQyuak3vGwhYzN7EzjdWZsRxBSjg/IntnwutmvfHtE7FWCdULCuHfDy+XbQG+prQe/vx+daTwa6QC+fue2LYcsWvl+UKesRv9e/w6hEL7g0M8cIYorRQXlkkDwgmXT6TB3Yk1NjYgQcYrCvXyBA5jwy7FxDvVgyn8+5NmztfKREDlaB/ur5IPaOfEeRKUYHBdqLSWm+gL3Y/s4doHfG7oLe93QU9EsNsg56LyAo94NUVktcfaBazP8m6CNfPC2DGEFMMToo2DpISlh8u/HswRuwl0a2gx6L3RNljbwEMqa5rlVrN4n66wM0XPPRz8icnngL6Ckvze/FmGJ00BZmkKlXa2nDPezaclfPFJXtDFBGptNae0IwxzMwhxHEFKODtjaDTEySvVQ0msjpDXTHW7X2bP9fiBFEB9FBW5tBfhm12cL/MGOK0UH/tPwBc9sDQuhMPXMAAAAASUVORK5CYII=) center / 100% 100% no-repeat; image-rendering: pixelated; }
+    #cursor .c-top { clip-path: inset(0 0 38.9% 0); transform-origin: 8% 61%; transition: transform .14s cubic-bezier(.2,.8,.3,1.3); }
+    #cursor .c-bot { clip-path: inset(61.1% 0 0 0); transition: transform .14s ease; }
+    #cursor.open .c-top { transform: translate(-2px, -9px) rotate(-42deg); }
+    #cursor.open .c-bot { transform: translateY(2px); }
+    #cursor .c-flash { position: absolute; left: 50%; top: 58%; width: 6px; height: 6px; margin: -3px; border-radius: 50%; opacity: 0; pointer-events: none;
+      background: radial-gradient(circle, #fff 0%, #fff 30%, rgba(255,255,255,0) 70%); }
+    #cursor.open .c-flash { animation: ballFlash .35s ease-out; }
+    @keyframes ballFlash { 0% { opacity: .95; transform: scale(1); } 100% { opacity: 0; transform: scale(9); } }
+    .spark { position: fixed; z-index: 1999; width: 5px; height: 5px; pointer-events: none; image-rendering: pixelated;
+      animation: sparkFly .6s ease-out forwards; }
+    @keyframes sparkFly { to { transform: translate(var(--dx), var(--dy)); opacity: 0; } }
+  }
+  @media (prefers-reduced-motion: reduce) { .spark { display: none; } #cursor .c-top, #cursor .c-bot, #cursor .c-wrap { transition: none; } #cursor.open .c-flash { animation: none; } }
+
   /* ---------- SECTIONS ---------- */
   section { padding: 90px 0; }
   section.alt { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -310,6 +335,7 @@
     <p class="loader-sub">loading...</p>
   </div>
 </div>
+<div id="cursor" aria-hidden="true"><div class="c-wrap"><div class="c-bot"></div><div class="c-top"></div><div class="c-flash"></div></div></div>
 <noscript><style>.loader{display:none} body.loading{overflow:auto} .reveal{opacity:1;transform:none}</style></noscript>
 
 <!-- ======================= NAV ======================= -->
@@ -825,6 +851,42 @@
   new IntersectionObserver(e => { running = e[0].isIntersecting; }).observe(hero);
   build();
   if (!reduce) requestAnimationFrame(loop);
+})();
+</script>
+<script>
+/* ---------- Master Ball cursor: follows the mouse, opens on click ---------- */
+(function () {
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  var c = document.getElementById("cursor");
+  if (!c) return;
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var cols = ["#ffffff", "#f5d0fe", "#e91ee0", getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#a78bfa"];
+  var openTimer;
+  document.addEventListener("mousemove", function (e) {
+    c.style.transform = "translate3d(" + e.clientX + "px," + e.clientY + "px,0)";
+    c.classList.add("show");
+    c.classList.toggle("link", !!e.target.closest("a, button, .filter, .project, .skill-card, input, textarea, label"));
+  }, { passive: true });
+  document.addEventListener("mouseleave", function () { c.classList.remove("show"); });
+  document.addEventListener("mouseenter", function () { c.classList.add("show"); });
+  function burst(x, y) {
+    if (reduce) return;
+    for (var i = 0; i < 9; i++) {
+      var s = document.createElement("div"), a = (Math.PI * 2 * i) / 9 + Math.random() * 0.5, d = 26 + Math.random() * 26;
+      s.className = "spark"; s.style.left = x - 2 + "px"; s.style.top = y - 2 + "px";
+      s.style.background = cols[i % cols.length];
+      s.style.setProperty("--dx", Math.cos(a) * d + "px"); s.style.setProperty("--dy", Math.sin(a) * d + "px");
+      document.body.appendChild(s); setTimeout(function (el) { el.remove(); }.bind(null, s), 650);
+    }
+  }
+  document.addEventListener("mousedown", function (e) {
+    clearTimeout(openTimer);
+    c.classList.remove("open"); void c.offsetWidth; c.classList.add("open");   // restart the flash
+    burst(e.clientX, e.clientY);
+  });
+  function close() { clearTimeout(openTimer); openTimer = setTimeout(function () { c.classList.remove("open"); }, 220); }
+  document.addEventListener("mouseup", close);
+  window.addEventListener("blur", close);
 })();
 </script>
 </body>
