@@ -18,7 +18,7 @@ A single-page personal portfolio with a dark **violet and black** look, a retro 
 
 - 🟣 **Violet and black theme** — near-black background with a violet accent, plus a soft lavender light mode
 - 👾 **Retro pixel-art hero background** drawn on a canvas, plus a film-grain overlay
-- 🖼️ **Avatar swap** — a cartoon picture by default that changes to my photo on hover (tap on phones)
+- 🖼️ **Avatar swap** — a cartoon picture in dark mode that switches to my photo in light mode
 - ⏳ **Loading screen** that fades out when the page is ready
 - ✨ **Card hover effects** on projects and skills
 - ⌨️ **Typing effect** that cycles through roles in the hero
