@@ -19,7 +19,7 @@ A single-page personal portfolio with a dark **violet and black** look, a retro 
 - 🟣 **Violet and black theme** — near-black background with a violet accent, plus a soft lavender light mode
 - 👾 **Retro pixel-art hero background** drawn on a canvas, plus a film-grain overlay
 - 🖼️ **Avatar swap** — a cartoon picture in dark mode that switches to my photo in light mode
-- ⏳ **Loading screen** that fades out when the page is ready
+- ⏳ **Pixel Gengar loading screen** with a bobbing ghost and a chunky progress bar that fades out when the page is ready
 - ✨ **Card hover effects** on projects and skills
 - 🎨 **Poster thumbnails** on each project, tinted violet to match the theme and revealing full color on hover
 - 🔮 **Master Ball cursor** that follows the mouse and pops open with a flash and pixel sparks on click (desktop only)

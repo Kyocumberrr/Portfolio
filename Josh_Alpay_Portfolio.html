@@ -157,17 +157,21 @@
     transition: opacity .7s ease, visibility .7s ease; }
   .loader.done { opacity: 0; visibility: hidden; }
   .loader-inner { display: flex; flex-direction: column; align-items: center; gap: 22px; }
-  .loader-orb { position: relative; width: 120px; height: 120px; border-radius: 50%; overflow: hidden;
-    border: 2px solid var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent);
-    box-shadow: 0 0 40px color-mix(in srgb, var(--warm) 35%, transparent); }
-  .loader-fill { position: absolute; left: 0; right: 0; bottom: 0; height: 100%; transform: translateY(85%); animation: fillUp 1.6s ease-out forwards; }
-  .loader-fill svg { position: absolute; left: 0; top: 0; width: 200%; height: 100%; color: var(--accent); animation: drift 3.2s linear infinite; }
-  @keyframes fillUp { to { transform: translateY(18%); } }
   .loader-name { font-size: 1.5rem; font-weight: 500; text-transform: lowercase; letter-spacing: .04em; }
   .loader-sub { font-family: var(--mono); font-size: .8rem; color: var(--muted); letter-spacing: .12em; animation: blink 1.4s ease-in-out infinite; }
   @keyframes blink { 50% { opacity: .35; } }
+  .loader-ghost { position: relative; width: 136px; height: 150px; display: grid; place-items: start center; }
+  .loader-gengar { width: 136px; height: 136px; image-rendering: pixelated; animation: gBob 1.3s ease-in-out infinite, gGlow 2.2s ease-in-out infinite; }
+  .loader-shadow { position: absolute; bottom: 0; left: 50%; width: 84px; height: 12px; margin-left: -42px; border-radius: 50%;
+    background: radial-gradient(ellipse, color-mix(in srgb, var(--accent) 55%, transparent), transparent 70%); animation: gShadow 1.3s ease-in-out infinite; }
+  @keyframes gBob { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-12px) rotate(2deg); } }
+  @keyframes gShadow { 0%,100% { transform: scale(1); opacity: .9; } 50% { transform: scale(.72); opacity: .5; } }
+  @keyframes gGlow { 0%,100% { filter: drop-shadow(0 0 8px rgba(167,139,250,.45)); } 50% { filter: drop-shadow(0 0 20px rgba(167,139,250,.9)) drop-shadow(0 0 4px rgba(236,40,60,.45)); } }
+  .loader-bar { width: 180px; height: 12px; border: 2px solid var(--accent); padding: 2px; image-rendering: pixelated; }
+  .loader-bar i { display: block; height: 100%; width: 0; background: var(--accent); animation: barFill 1.6s steps(10, end) forwards; }
+  @keyframes barFill { to { width: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .loader-gengar, .loader-shadow, .loader-sub { animation: none; } .loader-bar i { animation: none; width: 100%; } }
   body.loading { overflow: hidden; }
-  @media (prefers-reduced-motion: reduce) { .loader-fill, .loader-fill svg, .loader-sub { animation: none; } .loader-fill { transform: translateY(18%); } }
 
   /* ---------- MASTER BALL CURSOR ---------- */
   #cursor { display: none; }
@@ -330,9 +334,10 @@
 <body class="loading">
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-inner">
-    <div class="loader-orb"><div class="loader-fill"><svg viewBox="0 0 480 120" preserveAspectRatio="none"><path fill="currentColor" d="M0 50.0 L10 53.5 L20 56.1 L30 57.0 L40 56.1 L50 53.5 L60 50.0 L70 46.5 L80 43.9 L90 43.0 L100 43.9 L110 46.5 L120 50.0 L130 53.5 L140 56.1 L150 57.0 L160 56.1 L170 53.5 L180 50.0 L190 46.5 L200 43.9 L210 43.0 L220 43.9 L230 46.5 L240 50.0 L250 53.5 L260 56.1 L270 57.0 L280 56.1 L290 53.5 L300 50.0 L310 46.5 L320 43.9 L330 43.0 L340 43.9 L350 46.5 L360 50.0 L370 53.5 L380 56.1 L390 57.0 L400 56.1 L410 53.5 L420 50.0 L430 46.5 L440 43.9 L450 43.0 L460 43.9 L470 46.5 L480 50.0 V120 H0Z"/></svg></div></div>
+    <div class="loader-ghost"><img class="loader-gengar" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAABqklEQVR42u2XIU/EMBTHX5fJfYIpFCGoCTQhCwqDIXdmiiAnhpsgCHJi7iYmCeoMC+bMFFkIemJBkAVBEJd+gvkhLl3Gtm6v3Q645P7q0ry2v/d/r10PYKdtkq4ZxW+vrbQFTkwXDaNrRiESy1tb4U1yrKB3E10zCscKytg+2InpciHVrgwcKwAAAH9hFzRPiWwpugC4jtA8JWHscd3BlKEaW4cIYw/aklKxmTF3mEPVMUpXMDFdCGOvAADAOIDuEawoXY1ymlSZSVUnqpJxYrAjYznRCULzlPgLe3QIXqMKlebyZW37bN9Gxd98BELx6NI8nKyP9Hw5LTfhAcyXUyEIAAAicwnxssW4MPgeqYq3kYgDo98jGz01fyEi2h+sEbG6Pn8sf3/SNwAASLKo0ScECxE/30plap7e/YBgqsOgSiMLwebWIf51j6hDJr9eOY2x43t/880qWqK9w4vW8d5m5b20jw7OGjFf70/ozZMsanxUUVd8G1gbDEZt2Us16xAI5ibmnasMhUiyqGG9DMx2fGtonpKubFn9sXHC7xHs/9X64ti4nTD6Btkh369gD0VkAAAAAElFTkSuQmCC" alt="" width="136" height="136"><div class="loader-shadow"></div></div>
     <p class="loader-name">josh alpay</p>
     <p class="loader-sub">loading...</p>
+    <div class="loader-bar"><i></i></div>
   </div>
 </div>
 <div id="cursor" aria-hidden="true"><div class="c-wrap"><div class="c-bot"></div><div class="c-top"></div><div class="c-flash"></div></div></div>
