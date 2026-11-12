@@ -22,7 +22,7 @@ A single-page personal portfolio with a dark **violet and black** look, a retro 
 - ⏳ **Pixel Gengar loading screen** with a bobbing ghost and a chunky progress bar that fades out when the page is ready
 - ✨ **Card hover effects** on projects and skills
 - 🎨 **Poster thumbnails** on each project, tinted violet to match the theme and revealing full color on hover
-- 🔮 **Master Ball cursor** that follows the mouse and pops open with a flash and pixel sparks on click (desktop only)
+- 🖱️ **Custom pixel cursor** — arrow with a little kitty, a pointing hand over links, a ring while the page loads, and a ring ripple on click (desktop only)
 - ⌨️ **Typing effect** that cycles through roles in the hero
 - 🌗 **Dark / light toggle** that remembers your choice
 - 🗂️ **Filterable projects** grid (Web, Java, School)
