@@ -4,11 +4,11 @@
 
 **BSIT student @ De La Salle University – Dasmariñas · BIT14**
 
-A single-page personal portfolio with a dreamy **wave to earth** look — deep night-sea blues, a soft sunset glow, drifting waves, and a touch of film grain.
+A single-page personal portfolio with a dark **violet and black** look, a retro pixel-art hero background, and playful hover effects.
 
-![HTML5](https://img.shields.io/badge/HTML5-7fb7e6?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-0a1626?style=for-the-badge&logo=css3&logoColor=7fb7e6)
-![JavaScript](https://img.shields.io/badge/JavaScript-0a1626?style=for-the-badge&logo=javascript&logoColor=7fb7e6)
+![HTML5](https://img.shields.io/badge/HTML5-a78bfa?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-0a0710?style=for-the-badge&logo=css3&logoColor=a78bfa)
+![JavaScript](https://img.shields.io/badge/JavaScript-0a0710?style=for-the-badge&logo=javascript&logoColor=a78bfa)
 
 </div>
 
@@ -16,8 +16,11 @@ A single-page personal portfolio with a dreamy **wave to earth** look — deep n
 
 ## ✨ Features
 
-- 🌊 **Wave to earth theme** — night-sea blue with a sky-blue accent, plus a hazy light mode
-- ☀️ **Drifting waves and a floating sun** drawn in SVG at the bottom of the hero, plus a subtle film-grain overlay
+- 🟣 **Violet and black theme** — near-black background with a violet accent, plus a soft lavender light mode
+- 👾 **Retro pixel-art hero background** drawn on a canvas, plus a film-grain overlay
+- 🖼️ **Avatar swap** — a cartoon picture by default that changes to my photo on hover (tap on phones)
+- ⏳ **Loading screen** that fades out when the page is ready
+- ✨ **Card hover effects** on projects and skills
 - ⌨️ **Typing effect** that cycles through roles in the hero
 - 🌗 **Dark / light toggle** that remembers your choice
 - 🗂️ **Filterable projects** grid (Web, Java, School)
@@ -51,10 +54,10 @@ All theme colors live at the top of the `<style>` block:
 
 ```css
 :root {
-  --bg: #0a1626;        /* background */
-  --card: #12263f;      /* cards */
-  --accent: #7fb7e6;    /* sky blue */
-  --accent-2: #bfdcf5;  /* lighter blue */
+  --bg: #0a0710;        /* background */
+  --card: #160f24;      /* cards */
+  --accent: #a78bfa;    /* violet */
+  --accent-2: #c4b5fd;  /* lighter violet */
 }
 ```
 
@@ -76,7 +79,7 @@ Open to projects and internships — reach out through the contact section of th
 
 <div align="center">
 
-*keep flowing.* 🌊
+*keep learning.* 🟣
 
 © Josh Alpay · BIT14, DLSU-D
 
