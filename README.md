@@ -21,6 +21,7 @@ A single-page personal portfolio with a dark **violet and black** look, a retro 
 - 🖼️ **Avatar swap** — a cartoon picture in dark mode that switches to my photo in light mode
 - ⏳ **Loading screen** that fades out when the page is ready
 - ✨ **Card hover effects** on projects and skills
+- 🎨 **Poster thumbnails** on each project, tinted violet to match the theme and revealing full color on hover
 - ⌨️ **Typing effect** that cycles through roles in the hero
 - 🌗 **Dark / light toggle** that remembers your choice
 - 🗂️ **Filterable projects** grid (Web, Java, School)
