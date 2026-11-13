@@ -19,10 +19,11 @@ A single-page personal portfolio with a dark **violet and black** look, a retro 
 - 🟣 **Violet and black theme** — near-black background with a violet accent, plus a soft lavender light mode
 - 👾 **Retro pixel-art hero background** drawn on a canvas, plus a film-grain overlay
 - 🖼️ **Avatar swap** — a cartoon picture in dark mode that switches to my photo in light mode
-- ⏳ **Pixel Gengar loading screen** with a bobbing ghost and a chunky progress bar that fades out when the page is ready
+- ⏳ **Pixel Gengar loading screen** with a bobbing ghost, "loading..." text, and a chunky progress bar that fades out when the page is ready
 - ✨ **Card hover effects** on projects and skills
 - 🪟 **Click a project to open it** — shows what it does, runnable links, code, and a live mini demo for some projects
 - 🎨 **Poster thumbnails** on each project, tinted violet to match the theme and revealing full color on hover
+- 🔤 **Professional fonts** — Inter for text and headings, IBM Plex Mono for labels and code, both built into the page so it works offline
 - 🖱️ **Custom pixel cursor** — arrow with a little kitty, a pointing hand over links, a ring while the page loads, and a ring ripple on click (desktop only)
 - ⌨️ **Typing effect** that cycles through roles in the hero
 - 🌗 **Dark / light toggle** that remembers your choice
