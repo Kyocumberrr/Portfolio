@@ -94,3 +94,12 @@ Icons come from [IconBuddy](https://iconbuddy.com/), which collects open-source 
 
 - **Pixelarticons** (MIT) for the interface and soft-skill icons
 - **Simple Icons** (CC0) for the tech and social logos
+
+## 📱 Works on every device
+
+- Fully responsive from small phones (320 px) to large desktop screens, with no sideways scrolling
+- Touch-friendly: 44 px tap targets, no accidental zoom when typing in a field, tap on the project cards to open them
+- Safe-area support for phones with a notch, and a dynamic browser color that follows dark and light mode
+- Lighter on phones: the film-grain overlay and blur effects are switched off, and the animated background pauses when it is off screen
+- The custom cursor only appears on computers with a mouse
+- Respects "reduce motion" settings
