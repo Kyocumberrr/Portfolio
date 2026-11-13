@@ -87,3 +87,10 @@ Open to projects and internships — reach out through the contact section of th
 © Josh Alpay · BIT14, DLSU-D
 
 </div>
+
+## 🧩 Icons
+
+Icons come from [IconBuddy](https://iconbuddy.com/), which collects open-source icon sets:
+
+- **Pixelarticons** (MIT) for the interface and soft-skill icons
+- **Simple Icons** (CC0) for the tech and social logos
