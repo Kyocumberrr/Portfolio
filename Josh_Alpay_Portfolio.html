@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="Josh Alpay - BSIT student at De La Salle University-Dasmarinas. Portfolio of projects, skills, and education.">
-<meta name="theme-color" content="#0a0710">
+<meta name="theme-color" content="#0a1322">
 <meta name="color-scheme" content="dark light">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23a78bfa'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' font-family='monospace' font-weight='700' fill='%230a0710'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237bd44a'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' font-family='monospace' font-weight='700' fill='%230a1a05'%3EJ%3C/text%3E%3C/svg%3E">
 <title>Josh Alpay — Portfolio</title>
 <style>
   /* Fonts are embedded so the page looks the same offline */
@@ -18,32 +18,34 @@
      THEME — change these to restyle the whole site
      ========================================================= */
   :root {
-    --bg: #0a0710;           /* black */
-    --bg-2: #110b1c;
-    --card: #160f24;
-    --line: #2b2040;
-    --text: #f1ebfa;
-    --muted: #aa9fc4;
-    --accent: #a78bfa;       /* violet */
-    --accent-2: #c4b5fd;
-    --warm: #c084fc;         /* soft purple glow */
-    --on-accent: #0a0710;
+    --bg: #0a1322;           /* black */
+    --bg-2: #0e1a2e;
+    --card: #14233b;
+    --line: #27426c;
+    --text: #eef6e8;
+    --muted: #9fb4c8;
+    --accent: #7bd44a;       /* grass green */
+    --accent-2: #b6f08a;
+    --warm: #ffd24d;         /* moon / coin gold */
+    --on-accent: #0a1a05;
+    --sky: #2b4f94;
     --radius: 14px;
     --max: 1100px;
     --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; /* embedded, works offline */
     --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   }
   [data-theme="light"] {
-    --bg: #f6f2fc;
-    --bg-2: #ece5f8;
-    --card: #ffffff;
-    --line: #d4c8ec;
-    --text: #14091f;
-    --muted: #574870;
-    --accent: #6d28d9;
-    --accent-2: #5b21b6;
-    --warm: #a855f7;
+    --bg: #f7edd2;
+    --bg-2: #efe0b8;
+    --card: #fffaf0;
+    --line: #d6bf8a;
+    --text: #3a2812;
+    --muted: #7a6240;
+    --accent: #34801f;
+    --accent-2: #2a6a19;
+    --warm: #f0a830;
     --on-accent: #ffffff;
+    --sky: #86cdf0;
 }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -115,11 +117,11 @@
   .avatar-card {
     border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
     background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px;
-    box-shadow: 0 20px 60px -25px rgba(167,139,250,.35);
+    box-shadow: 0 20px 60px -25px color-mix(in srgb, var(--accent) 35%, transparent);
   }
   .avatar {
     aspect-ratio: 1; border-radius: 14px; overflow: hidden;
-    background: linear-gradient(135deg, #a78bfa, #160f24);
+    background: linear-gradient(135deg, var(--accent), var(--card));
     display: grid; place-items: center;
     font-size: 5rem; font-weight: 700; color: #ffffff; letter-spacing: -0.04em;
   }
@@ -165,7 +167,7 @@
     background: radial-gradient(ellipse, color-mix(in srgb, var(--accent) 55%, transparent), transparent 70%); animation: gShadow 1.3s ease-in-out infinite; }
   @keyframes gBob { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-12px) rotate(2deg); } }
   @keyframes gShadow { 0%,100% { transform: scale(1); opacity: .9; } 50% { transform: scale(.72); opacity: .5; } }
-  @keyframes gGlow { 0%,100% { filter: drop-shadow(0 0 8px rgba(167,139,250,.45)); } 50% { filter: drop-shadow(0 0 20px rgba(167,139,250,.9)) drop-shadow(0 0 4px rgba(236,40,60,.45)); } }
+  @keyframes gGlow { 0%,100% { filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent) 45%, transparent)); } 50% { filter: drop-shadow(0 0 20px color-mix(in srgb, var(--accent) 90%, transparent)) drop-shadow(0 0 4px rgba(236,40,60,.45)); } }
   .loader-bar { width: 180px; height: 12px; border: 2px solid var(--accent); padding: 2px; image-rendering: pixelated; }
   .loader-bar i { display: block; height: 100%; width: 0; background: var(--accent); animation: barFill 1.6s steps(10, end) forwards; }
   @keyframes barFill { to { width: 100%; } }
@@ -683,7 +685,7 @@
 
   // ---------- Theme toggle ----------
   const root = document.documentElement;
-  function setThemeColor() { const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = root.dataset.theme === "light" ? "#f1ecfb" : "#0a0710"; }
+  function setThemeColor() { const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = root.dataset.theme === "light" ? "#f7edd2" : "#0a1322"; }
   try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch (e) {}
   setThemeColor();
   document.getElementById("themeBtn").addEventListener("click", () => {
@@ -784,10 +786,10 @@
 
   function palette() {
     const cs = getComputedStyle(document.documentElement), v = n => parse(cs.getPropertyValue(n));
-    const bg = v("--bg"), accent = v("--accent"), warm = v("--warm");
+    const bg = v("--bg"), accent = v("--accent"), warm = v("--warm"), skyc = v("--sky");
     const dark = (bg[0] + bg[1] + bg[2]) / 3 < 128;
-    const top = dark ? bg : mix(bg, accent, .10);
-    const horizon = mix(bg, accent, dark ? .32 : .38);
+    const top = dark ? bg : mix(bg, skyc, .45);
+    const horizon = mix(bg, skyc, dark ? .55 : .75);
     const sky = Array.from({ length: 9 }, (_, i) => mix(top, horizon, i / 8));
     const layerT = dark ? [.24, .14, .06] : [.34, .48, .64];
     return { dark, sky, bg, accent, warm,
@@ -815,7 +817,7 @@
       const idx = Math.min(bands, Math.floor(t + BAYER[(y & 1) * 2 + (x & 1)] * (t % 1 > 0 ? 1 : 0)));
       b.fillStyle = css(pal.sky[idx]); b.fillRect(x, y, 1, 1);
     }
-    const mr = P === 3 ? 10 : 14, mx = Math.round(W * (W < 220 ? .78 : innerWidth < 700 ? .9 : .86)), my = Math.round(H * (innerWidth < 700 ? .05 : .24));
+    const mr = P === 3 ? 10 : 14, mx = Math.round(W * (W < 220 ? .78 : innerWidth < 700 ? .9 : innerWidth < 1000 ? .86 : .52)), my = Math.round(H * (innerWidth < 700 ? .05 : innerWidth < 1000 ? .24 : .17));
     for (let y = -mr - 9; y <= mr + 9; y++) for (let x = -mr - 9; x <= mr + 9; x++) {   // dithered halo
       const d = Math.hypot(x, y);
       if (d > mr && d < mr + 9 && ((x + y) & 1) === 0 && d < mr + 3 + (Math.abs(x * 7 + y * 3) % 6)) {
@@ -823,7 +825,7 @@
     }
     for (let y = -mr; y <= mr; y++) for (let x = -mr; x <= mr; x++) if (Math.hypot(x, y) <= mr + .3) {
       b.fillStyle = css(pal.moon); b.fillRect(mx + x, my + y, 1, 1); }
-    [[-4, -3, 3], [3, 2, 4], [-2, 5, 2], [5, -5, 2]].forEach(([cx, cy, r]) => {
+    if (pal.dark) [[-4, -3, 3], [3, 2, 4], [-2, 5, 2], [5, -5, 2]].forEach(([cx, cy, r]) => {
       r = Math.max(1, Math.round(r * mr / 14));
       for (let y = -r; y <= r; y++) for (let x = -r; x <= r; x++) if (Math.hypot(x, y) <= r + .2) {
         const px = Math.round(cx * mr / 14) + x, py = Math.round(cy * mr / 14) + y;

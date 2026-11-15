@@ -4,11 +4,11 @@
 
 **BSIT student @ De La Salle University – Dasmariñas · BIT14**
 
-A single-page personal portfolio with a dark **violet and black** look, a retro pixel-art hero background, and playful hover effects.
+A single-page personal portfolio with a pixel-game look inspired by **Terraria** (night mode) and **Stardew Valley** (day mode), a retro pixel-art hero scene, and playful hover effects.
 
-![HTML5](https://img.shields.io/badge/HTML5-a78bfa?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-0a0710?style=for-the-badge&logo=css3&logoColor=a78bfa)
-![JavaScript](https://img.shields.io/badge/JavaScript-0a0710?style=for-the-badge&logo=javascript&logoColor=a78bfa)
+![HTML5](https://img.shields.io/badge/HTML5-7bd44a?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-0a1322?style=for-the-badge&logo=css3&logoColor=7bd44a)
+![JavaScript](https://img.shields.io/badge/JavaScript-0a1322?style=for-the-badge&logo=javascript&logoColor=7bd44a)
 
 </div>
 
@@ -16,13 +16,13 @@ A single-page personal portfolio with a dark **violet and black** look, a retro 
 
 ## ✨ Features
 
-- 🟣 **Violet and black theme** — near-black background with a violet accent, plus a soft lavender light mode
+- 🌳 **Terraria night and Stardew day themes** — a deep navy night sky with grass-green accents, and a warm parchment day mode with a blue sky and a sun
 - 👾 **Retro pixel-art hero background** drawn on a canvas, plus a film-grain overlay
 - 🖼️ **Avatar swap** — a cartoon picture in dark mode that switches to my photo in light mode
 - ⏳ **Pixel Gengar loading screen** with a bobbing ghost, "loading..." text, and a chunky progress bar that fades out when the page is ready
 - ✨ **Card hover effects** on projects and skills
 - 🪟 **Click a project to open it** — shows what it does, runnable links, code, and a live mini demo for some projects
-- 🎨 **Poster thumbnails** on each project, tinted violet to match the theme and revealing full color on hover
+- 🎨 **Poster thumbnails** on each project, tinted green to match the theme and revealing full color on hover
 - 🔤 **Professional fonts** — Inter for text and headings, IBM Plex Mono for labels and code, both built into the page so it works offline
 - 🖱️ **Custom pixel cursor** — arrow with a little kitty, a pointing hand over links, a ring while the page loads, and a ring ripple on click (desktop only)
 - ⌨️ **Typing effect** that cycles through roles in the hero
@@ -58,10 +58,10 @@ All theme colors live at the top of the `<style>` block:
 
 ```css
 :root {
-  --bg: #0a0710;        /* background */
-  --card: #160f24;      /* cards */
-  --accent: #a78bfa;    /* violet */
-  --accent-2: #c4b5fd;  /* lighter violet */
+  --bg: #0a1322;        /* background */
+  --card: #14233b;      /* cards */
+  --accent: #7bd44a;    /* violet */
+  --accent-2: #b6f08a;  /* lighter green */
 }
 ```
 
@@ -83,7 +83,7 @@ Open to projects and internships — reach out through the contact section of th
 
 <div align="center">
 
-*keep learning.* 🟣
+*keep learning.* 🌱
 
 © Josh Alpay · BIT14, DLSU-D
 
