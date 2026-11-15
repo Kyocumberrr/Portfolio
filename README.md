@@ -17,7 +17,7 @@ A single-page personal portfolio with a pixel-game look inspired by **Terraria**
 ## ✨ Features
 
 - 🌳 **Terraria night and Stardew day themes** — a deep navy night sky with grass-green accents, and a warm parchment day mode with a blue sky and a sun
-- 👾 **Retro pixel-art hero background** drawn on a canvas, plus a film-grain overlay
+- 👾 **Retro pixel-art hero background** drawn on a canvas, plus a film-grain overlay with flapping birds, a moving car, drifting clouds, and a sun or moon
 - 🖼️ **Avatar swap** — a cartoon picture in dark mode that switches to my photo in light mode
 - ⏳ **Pixel Gengar loading screen** with a bobbing ghost, "loading..." text, and a chunky progress bar that fades out when the page is ready
 - ✨ **Card hover effects** on projects and skills

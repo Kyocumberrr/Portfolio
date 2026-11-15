@@ -775,7 +775,7 @@
   const hero = cv.parentElement, ctx = cv.getContext("2d");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const FPS = 10;                       // low frame rate = chunky retro feel
-  let W, H, P, pal, bgL, fgL, clouds, car, tick = 0, last = 0, running = true;
+  let W, H, P, pal, bgL, fgL, clouds, car, birds, tick = 0, last = 0, running = true;
 
   const rng = seed => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
     t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
@@ -860,6 +860,9 @@
     clouds = Array.from({ length: Math.max(3, Math.round(W / 150)) }, () => ({ x: R() * W, y: Math.floor(H * (.1 + R() * .38)),
       w: 16 + Math.floor(R() * 16), sp: .015 + R() * .03 }));
     car = { x: reduce ? Math.round(W * .3) : -22 };
+    birds = Array.from({ length: Math.max(4, Math.round(W / 75)) }, () => ({
+      x: R() * W, y: Math.floor(H * (.08 + R() * .34)), big: R() < .35, ph: Math.floor(R() * 4),
+      sp: (.7 + R() * 1.1) * (R() < .5 ? 1 : -1) }));
     draw();
   }
 
@@ -868,6 +871,20 @@
     ctx.fillStyle = css(pal.cloud);
     rows.forEach((r, i) => { const w = Math.floor(c.w * r); ctx.fillRect(x0 + Math.floor((c.w - w) / 2), c.y + i, w, 1); });
     ctx.fillRect(x0 + 2, c.y - 1, Math.floor(c.w * .3), 1);
+  }
+
+  // little pixel birds: two wing positions (up / down), a small and a big kind
+  const BIRD = {
+    small: [["X.....X", ".X...X.", "..X.X..", "...X..."], ["...X...", "..XXX..", ".X...X.", "X.....X"]],
+    big:   [["X.......X", ".XX...XX.", "...XXX...", "....X...."], ["....X....", "..XXXXX..", ".XX...XX.", "X.......X"]]
+  };
+  function drawBirds() {
+    ctx.fillStyle = css(pal.dark ? [226, 238, 255] : [60, 46, 32]);
+    birds.forEach(b => {
+      const frame = reduce ? 0 : ((tick >> 1) + b.ph) & 1, rows = BIRD[b.big ? "big" : "small"][frame];
+      const bob = reduce ? 0 : Math.round(Math.sin((tick + b.ph * 3) / 6) * 1.5), x0 = Math.round(b.x), y0 = b.y + bob;
+      rows.forEach((row, ry) => { for (let rx = 0; rx < row.length; rx++) if (row[rx] === "X") ctx.fillRect(x0 + rx, y0 + ry, 1, 1); });
+    });
   }
 
   function road() {
@@ -913,6 +930,7 @@
     ctx.clearRect(0, 0, W, H);
     ctx.drawImage(bgL, 0, 0);
     clouds.forEach(cloud);
+    drawBirds();
     ctx.drawImage(fgL, 0, 0);
     road();
     drawCar();
@@ -923,6 +941,7 @@
     if (!running || t - last < 1000 / FPS) return;
     last = t; tick++;
     clouds.forEach(c => { c.x += c.sp * 6; if (c.x > W + 4) c.x = -c.w - 4; });
+    birds.forEach(b => { b.x += b.sp; if (b.sp > 0 && b.x > W + 8) b.x = -8; if (b.sp < 0 && b.x < -8) b.x = W + 8; });
     car.x += 2; if (car.x > W + 4) car.x = -22;                      // drive left to right, then loop
     draw();
   }
