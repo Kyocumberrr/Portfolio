@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌊 Josh Alpay — Portfolio
+# 🌳 Josh Alpay — Portfolio
 
 **BSIT student @ De La Salle University – Dasmariñas · BIT14**
 
@@ -60,7 +60,7 @@ All theme colors live at the top of the `<style>` block:
 :root {
   --bg: #0a1322;        /* background */
   --card: #14233b;      /* cards */
-  --accent: #7bd44a;    /* violet */
+  --accent: #7bd44a;    /* grass green */
   --accent-2: #b6f08a;  /* lighter green */
 }
 ```
