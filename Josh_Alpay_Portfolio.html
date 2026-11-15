@@ -100,7 +100,9 @@
   }
   .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
   h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1.05; letter-spacing: -0.02em; }
-  h1 .hl { color: var(--accent); }
+  h1 .hl { color: var(--text); }                                  /* white in night mode, dark brown in day mode */
+  h1 .lead { color: color-mix(in srgb, var(--text) 68%, transparent); font-weight: 500; }
+  h1 .name-dot { color: var(--accent); }
   .typed { font-family: var(--mono); color: var(--muted); font-size: 1.1rem; margin: 18px 0 26px; min-height: 1.8em; }
   .typed .cursor { display: inline-block; width: 9px; background: var(--accent); animation: blink 1s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
@@ -449,7 +451,7 @@
   <div class="wrap">
     <div>
       <div class="tag"><span class="dot"></span> Open to projects &amp; internships</div>
-      <h1>Hey, I’m <span class="hl">Josh Alpay</span>.</h1>
+      <h1><span class="lead">Hey, I’m</span> <span class="hl">Josh Alpay</span><span class="name-dot">.</span></h1>
       <div class="typed"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
       <p class="lead">
         <!-- EDIT: your one-line headline -->
