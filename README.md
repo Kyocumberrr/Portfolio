@@ -91,10 +91,7 @@ Open to projects and internships — reach out through the contact section of th
 
 ## 🧩 Icons
 
-Icons come from [IconBuddy](https://iconbuddy.com/), which collects open-source icon sets:
-
-- **Pixelarticons** (MIT) for the interface and soft-skill icons
-- **Simple Icons** (CC0) for the tech and social logos
+All icons come from [Lucide](https://github.com/lucide-icons/lucide) (ISC license). Lucide no longer includes brand logos, so the GitHub, LinkedIn, Facebook, Figma, and VS Code icons are generic Lucide icons instead of the official logos.
 
 ## 📱 Works on every device
 
