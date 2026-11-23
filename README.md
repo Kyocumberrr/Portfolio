@@ -23,7 +23,7 @@ A single-page personal portfolio with a pixel-game look inspired by **Terraria**
 - 🪟 **Click a project to open it** — shows what it does, runnable links, code, and a live mini demo for some projects
 - 🎨 **Poster thumbnails** on each project, tinted green to match the theme and revealing full color on hover
 - 🔤 **Professional fonts** — Inter for text and headings, IBM Plex Mono for labels and code, both built into the page so it works offline
-- 🖱️ **Custom pixel cursor** — arrow with a little kitty, a pointing hand over links, a and a ring ripple on click (desktop only)
+- 🖱️ **Custom pixel cursor** — arrow with a little kitty, a pointing hand over links, and a ring ripple on click (desktop only)
 - ⌨️ **Typing effect** that cycles through roles in the hero
 - 🌗 **Dark / light toggle** that remembers your choice
 - 🗂️ **Filterable projects** grid (Web, Java, School)
